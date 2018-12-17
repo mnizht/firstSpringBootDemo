@@ -1,0 +1,13 @@
+@date:2018-12-17
+@title:springboot-jpa
+测试项目所用系统与版本
+springboot 2.0.7
+mysql	5.7
+jdk 1.8
+
+由于springboot版本为2.0.7，当使用低版本的Jackson时，会报
+java.lang.ClassNotFoundException: com.fasterxml.jackson.databind.Module 异常，此时需要更新jackson版本为2.9.4
+
+mysql 5.7 使用的mysql-connector-java 为5.1.47，mysql驱动依然是com.mysql.jdbc.driver,只有6.0以上版本时，驱动才变为
+com.mysql.cj.jdbc.driver, 且要设置时区
+
