@@ -21,17 +21,19 @@
 	</properties>
 
 	<dependencies>
+		<!-- Wbe开发包，将载入Spring MVC所需的包，且内嵌tomcat -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<!-- 加载测试依赖包 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
+ 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
@@ -68,7 +70,7 @@
 
 
 	</dependencies>
-
+	<!-- 引入插件 -->
 	<build>
 		<plugins>
 			<plugin>

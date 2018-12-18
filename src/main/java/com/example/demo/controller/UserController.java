@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.example.demo.pojo.User;
+import com.example.demo.repository.JpaUserRepository;
 import com.example.demo.service.UserService;
 
 /**
@@ -34,11 +36,39 @@ import com.example.demo.service.UserService;
 
 @RestController
 @RequestMapping(value = "/user")
+
 public class UserController {
 
 	@Autowired
-	UserService userService;
+	//UserService userService;
+	private JpaUserRepository jpaUserRepository = null;
+	
+	@RequestMapping("/getUserById")
+	@ResponseBody
+	public User getUserById(Long id) {
+		User user = jpaUserRepository.getUserById(id);
+		return user;
+	}
+	
+	@RequestMapping("/findByUserNameLike")
+	@ResponseBody
+	public List<User> findByUserNameLike(String userName) {
+		List<User> userList = jpaUserRepository.findByUserNameLike(userName);
+		return userList;
+	}
+	
+	@RequestMapping("/findByUserNameLikeOrNoteLike")
+	@ResponseBody
+	public List<User> findByUserNameLikeOrNoteLike(String userName, String note) {
+		String userNameLike = "%" + userName + "%";
+		String noteLike = "%" + note + "%";
+		List<User> userList = jpaUserRepository.findByUserNameLikeOrNoteLike(userNameLike,noteLike);
+		return userList;
+	}
+	
 
+	/***
+	 * 改由jpa实现
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
 		System.out.println("This user's id is :" + id);
@@ -86,4 +116,6 @@ public class UserController {
 		userService.deleteUserById(id);
 		return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
 	}
+	
+	***/
 }
