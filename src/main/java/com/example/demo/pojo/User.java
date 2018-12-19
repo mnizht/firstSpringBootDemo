@@ -1,5 +1,7 @@
 package com.example.demo.pojo;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
@@ -28,6 +30,22 @@ public class User {
 	@Column(name = "user_name")
 	private String userName = null;
 
+	@Column(name = "first_name")
+	private String firstName = null;
+	
+	@Column(name = "last_name")
+	private String lastName = null;
+	
+	@Column(name = "start_date")
+	private Date startDate = null;
+	
+	@Column(name = "age")
+	private Integer age = null;
+	
+	@Column(name = "active")
+	private boolean active ;
+	
+	@Column(name = "note")
 	private String note = null;
 	
 	//定义转换器
@@ -70,6 +88,52 @@ public class User {
 		this.sex = sex;
 	}
 	
+	
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "User{"+this.getId()+","+this.getUserName()+","+this.getSex()+","+this.getNote()+"}";
+	}
 	
 
 }
