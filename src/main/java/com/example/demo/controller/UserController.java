@@ -50,7 +50,6 @@ import com.example.demo.service.UserService;
 @RequestMapping(value = "/user")
 
 public class UserController {
-
 	
 	static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 
