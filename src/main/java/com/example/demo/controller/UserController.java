@@ -51,7 +51,7 @@ import com.example.demo.service.UserService;
 
 public class UserController {
 	
-
+	static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 
 	@Autowired
 	//UserService userService;
@@ -91,7 +91,17 @@ public class UserController {
 	@ResponseBody
 	public List<User> findByStartDateBetween(@RequestParam("beginDate") Date beginDate,@RequestParam("endDate") Date endDate){
 		
-
+//		System.out.println("beginDate="+beginDateStr+"; endDate="+endDateStr);
+//		Date beginDate = null;
+//		Date endDate = null;
+//		
+//		try {
+//			beginDate = df.parse(beginDateStr);
+//			endDate = df.parse(endDateStr);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		List<User> userList = jpaUserRepository.findByStartDateBetween(beginDate, endDate);
 		return userList;
