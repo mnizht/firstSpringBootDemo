@@ -88,7 +88,6 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	List<User> findByActiveFalse();
 	//… where UPPER(x.firstame) = UPPER(?1)
 	List<User> findByFirstNameIgnoreCase(String firstName);
-	
-	
-	
+
+
 }
