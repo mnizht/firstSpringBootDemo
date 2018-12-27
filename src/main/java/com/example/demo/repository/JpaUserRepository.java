@@ -8,6 +8,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.pojo.User;
+import org.springframework.data.jpa.repository.Query;
 
 public interface JpaUserRepository extends JpaRepository<User, Long> {
 
@@ -89,5 +90,9 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	//… where UPPER(x.firstame) = UPPER(?1)
 	List<User> findByFirstNameIgnoreCase(String firstName);
 
+	@Query(value = "select * from t_user n where if(?3 is null, 1=1 , start_date>?3) and if(?4 is null, 1=1, start_date<?4) " +
+			"order by start_date desc limit ?1,?2 ",
+			nativeQuery = true)
+	List<User> findPageListByStartDate(Integer page, Integer size, Date startDate, Date endDate);
 
 }
