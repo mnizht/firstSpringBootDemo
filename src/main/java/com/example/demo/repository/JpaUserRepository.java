@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -90,9 +91,21 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	//… where UPPER(x.firstame) = UPPER(?1)
 	List<User> findByFirstNameIgnoreCase(String firstName);
 
+	List<User> findByNoteAndStatusIn(String note,List<Integer> status);
+
 	@Query(value = "select * from t_user n where if(?3 is null, 1=1 , start_date>?3) and if(?4 is null, 1=1, start_date<?4) " +
 			"order by start_date desc limit ?1,?2 ",
 			nativeQuery = true)
 	List<User> findPageListByStartDate(Integer page, Integer size, Date startDate, Date endDate);
 
+	@Query(value = "select  * from t_user where age in ?1" ,nativeQuery =true)
+	List<User> findAllByAgeIn(List<Integer> ages);
+
+	@Query(value = "select user_name,s.status from t_user t left join status s " +
+				"on t.status=s.id where t.id=?1",nativeQuery = true)
+	List<Map> searchInfo(String userId);
+
+//	@Query(value = "select * from t_user where  start_date>:#{map.get('startDate')}",
+//	nativeQuery = true)
+//	List<?> findByMap(Map<String,Date> map);
 }

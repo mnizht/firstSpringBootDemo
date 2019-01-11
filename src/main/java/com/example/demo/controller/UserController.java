@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zhuht
@@ -253,6 +254,20 @@ public class UserController {
 
 
         return jpaUserRepository.findPageListByStartDate(page,size,startDate,endDate);
+    }
+
+    /**
+     * 按List<Integer> ages 查询*/
+    @GetMapping("/agesIn")
+    public List<User> findAllByAgesIn(@RequestParam("ages") List<Integer> ages){
+        return jpaUserRepository.findAllByAgeIn(ages);
+    }
+
+    /**
+     * 查询用户状态*/
+    @GetMapping("/status")
+    public List<Map> findStatus(String userId){
+        return jpaUserRepository.searchInfo(userId);
     }
 
 }

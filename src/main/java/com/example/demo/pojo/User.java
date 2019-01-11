@@ -12,128 +12,137 @@ import javax.persistence.Table;
 
 import com.example.demo.converter.SexConverter;
 import com.example.demo.enumeration.SexEnum;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author zhuht
  * @date 2018-12-17
- * */
+ */
 
-@Entity(name="user")
+@Entity(name = "user")
 @Table(name = "t_user")
 public class User {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id = null;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id = null;
 
-	@Column(name = "user_name")
-	private String userName = null;
+  @Column(name = "user_name")
+  private String userName = null;
 
-	@Column(name = "first_name")
-	private String firstName = null;
-	
-	@Column(name = "last_name")
-	private String lastName = null;
-	
-	@Column(name = "start_date")
-	private Date startDate = null;
-	
-	@Column(name = "age")
-	private Integer age = null;
-	
-	@Column(name = "active")
-	private boolean active ;
-	
-	@Column(name = "note")
-	private String note = null;
-	
-	//定义转换器
-	@Convert(converter = SexConverter.class)
-	private SexEnum sex = null;
+  @Column(name = "first_name")
+  private String firstName = null;
 
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
+  @Column(name = "last_name")
+  private String lastName = null;
 
-	public Long getId() {
-		return id;
-	}
+  @Column(name = "start_date")
+  private Date startDate = null;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  @Column(name = "age")
+  private Integer age = null;
 
-	public String getUserName() {
-		return userName;
-	}
+  @Column(name = "active")
+  private boolean active;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+  @Column(name = "note")
+  private String note = null;
 
-	public String getNote() {
-		return note;
-	}
+  @Column(name = "status")
+  private Integer status;
 
-	public void setNote(String note) {
-		this.note = note;
-	}
 
-	public SexEnum getSex() {
-		return sex;
-	}
+  //定义转换器
+  @Convert(converter = SexConverter.class)
+  private SexEnum sex = null;
 
-	public void setSex(SexEnum sex) {
-		this.sex = sex;
-	}
-	
-	
-	public String getFirstName() {
-		return firstName;
-	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
 
-	public String getLastName() {
-		return lastName;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+  public String getUserName() {
+    return userName;
+  }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
-	public Integer getAge() {
-		return age;
-	}
+  public String getNote() {
+    return note;
+  }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+  public void setNote(String note) {
+    this.note = note;
+  }
 
-	public boolean isActive() {
-		return active;
-	}
+  public SexEnum getSex() {
+    return sex;
+  }
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+  public void setSex(SexEnum sex) {
+    this.sex = sex;
+  }
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return "User{"+this.getId()+","+this.getUserName()+","+this.getSex()+","+this.getNote()+"}";
-	}
-	
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public Date getStartDate() {
+    return startDate;
+  }
+
+  public void setStartDate(Date startDate) {
+    this.startDate = startDate;
+  }
+
+  public Integer getAge() {
+    return age;
+  }
+
+  public void setAge(Integer age) {
+    this.age = age;
+  }
+
+  public boolean isActive() {
+    return active;
+  }
+
+  public void setActive(boolean active) {
+    this.active = active;
+  }
+
+  public Integer getStatus() {
+    return status;
+  }
+
+  public void setStatus(Integer status) {
+    this.status = status;
+  }
+
+  @Override
+  public String toString() {
+    // TODO Auto-generated method stub
+    return "User{" + this.getId() + "," + this.getUserName() + "," + this.getSex() + "," + this.getNote() + "}";
+  }
+
 
 }
