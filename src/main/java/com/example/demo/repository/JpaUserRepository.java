@@ -125,4 +125,5 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	countQuery = "select count(*)  from t_user",
 	nativeQuery = true)
 	Page<User> findAllPage(Pageable pageable);
+
 }
