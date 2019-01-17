@@ -38,6 +38,9 @@ public class User {
   @Column(name = "start_date")
   private Date startDate = null;
 
+  @Column(name = "end_date")
+  private Date endDate = null;
+
   @Column(name = "age")
   private Integer age = null;
 
@@ -104,6 +107,14 @@ public class User {
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public Date getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(Date endDate) {
+    this.endDate = endDate;
   }
 
   public Date getStartDate() {

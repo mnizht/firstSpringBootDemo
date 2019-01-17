@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.pojo.User;
@@ -108,4 +110,19 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 //	@Query(value = "select * from t_user where  start_date>:#{map.get('startDate')}",
 //	nativeQuery = true)
 //	List<?> findByMap(Map<String,Date> map);
+
+	@Query(value = "select user_name userName,note,sum(age) ages from t_user group by user_name,note",
+	nativeQuery = true)
+	List<Map<String,Object>> findByUserNameAndNote();
+
+	//查询所选日期在start_date 和 end_date之间的数据
+	List<User> findAllByStartDateBeforeAndEndDateAfter(Date date,Date date2);
+
+	List<User> findAllByStartDateLessThanEqualAndEndDateGreaterThanEqual(Date date,Date date2);
+
+	//分页
+	@Query(value = "select * from t_user",
+	countQuery = "select count(*)  from t_user",
+	nativeQuery = true)
+	Page<User> findAllPage(Pageable pageable);
 }
