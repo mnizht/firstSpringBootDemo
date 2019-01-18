@@ -234,7 +234,7 @@ public class UserController {
     @RequestMapping("/findByPage")
     public List<User> findByPage(@RequestParam("page") int page, @RequestParam("size") int size,
                                  @RequestParam("sort") String sort){
-        Pageable pageable = new PageRequest(page,size,new Sort(Sort.Direction.DESC,sort));
+        Pageable pageable = PageRequest.of(page,size,new Sort(Sort.Direction.DESC,sort));
         return jpaUserRepository.findAll(pageable).getContent();
 
 

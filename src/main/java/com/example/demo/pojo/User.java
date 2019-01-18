@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import com.example.demo.converter.SexConverter;
 import com.example.demo.enumeration.SexEnum;
+import lombok.Value;
 
 /**
  * @author zhuht
@@ -155,5 +156,9 @@ public class User {
     return "User{" + this.getId() + "," + this.getUserName() + "," + this.getSex() + "," + this.getNote() + "}";
   }
 
-
+  @Value
+  class NamesOnly2 {
+    String firstname,lastname;
+  }
 }
+

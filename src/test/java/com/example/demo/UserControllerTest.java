@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.pojo.NamesOnly2;
 import com.example.demo.pojo.User;
 import com.example.demo.repository.JpaUserRepository;
 import org.junit.Test;
@@ -76,5 +77,26 @@ public class UserControllerTest {
     +", size="+page.getSize()+", Number="+page.getNumber()+", NumberElements="+page.getNumberOfElements());
     System.out.println(page.getPageable());
     System.out.println(page.getContent());
+  }
+
+  @Test
+  public void findByLastName(){
+//    System.out.println(jpaUserRepository.findByLastName("one"));
+    jpaUserRepository.findByLastName("one").stream().forEach(item->{
+      System.out.println(item.getFirstName()+item.getLastName());
+    });
+  }
+
+  @Test
+  public void findCollectionByLastName(){
+    Collection<User> users = jpaUserRepository.findByLastName("one",User.class);
+    Collection<NamesOnly2> names = jpaUserRepository.findByLastName("one",NamesOnly2.class);
+    users.stream().forEach(item->{
+      System.out.println(item);
+    });
+
+    names.stream().forEach(item->{
+      System.out.println(item.getFirstName()+item.getLastName());
+    });
   }
 }
