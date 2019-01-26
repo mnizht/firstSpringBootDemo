@@ -73,8 +73,13 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.4</version>
 		</dependency>
-
-
+<!--
+		<dependency>
+			<groupId>org.activiti</groupId>
+			<artifactId>activiti-spring-boot-starter-basic</artifactId>
+			<version>6.0.0</version>
+		</dependency>
+-->
 	</dependencies>
 	<!-- 引入插件 -->
 	<build>
