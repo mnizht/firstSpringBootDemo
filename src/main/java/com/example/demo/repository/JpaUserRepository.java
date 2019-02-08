@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.example.demo.pojo.NamesOnly;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -125,5 +126,10 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	countQuery = "select count(*)  from t_user",
 	nativeQuery = true)
 	Page<User> findAllPage(Pageable pageable);
+
+	//查询属性子集
+	Collection<NamesOnly> findByLastName(String lastname);
+
+	<T> Collection<T> findByLastName(String lastname,Class<T> type);
 
 }
