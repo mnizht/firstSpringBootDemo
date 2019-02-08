@@ -21,5 +21,4 @@ public class FirstSpringBootDemoApplication implements WebMvcConfigurer {
 	public static void main(String[] args) {
 		SpringApplication.run(FirstSpringBootDemoApplication.class, args);
 	}
-
 }
