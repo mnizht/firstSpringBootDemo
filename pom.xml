@@ -81,6 +81,12 @@
 			<version>6.3.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
 	</dependencies>
 	<!-- 引入插件 -->
 	<build>
