@@ -122,7 +122,9 @@ public class UserController {
 
     @PostMapping(value = "/create")
     public void createUser(@RequestBody User user, @RequestParam("type") String type) {
-        System.out.print("type="+type);
+        System.out.println("type="+type);
+        System.out.println(user.getUserName());
+        System.out.println(getEncoding(user.getUserName()));
         //返回插入的实例，包括自动生成的id
         User u = jpaUserRepository.save(user);
         if (u == null) {
@@ -268,6 +270,35 @@ public class UserController {
     @GetMapping("/status")
     public List<Map> findStatus(String userId){
         return jpaUserRepository.searchInfo(userId);
+    }
+
+    /**
+     * 判断字符串的编码
+     *
+     * @param str
+     * @return
+     */
+    public static String getEncoding(String str) {
+        String encode[] = new String[]{
+          "UTF-8",
+          "ISO-8859-1",
+          "GB2312",
+          "GBK",
+          "GB18030",
+          "Big5",
+          "Unicode",
+          "ASCII"
+        };
+        for (int i = 0; i < encode.length; i++){
+            try {
+                if (str.equals(new String(str.getBytes(encode[i]), encode[i]))) {
+                    return encode[i];
+                }
+            } catch (Exception ex) {
+            }
+        }
+
+        return "";
     }
 
 }
