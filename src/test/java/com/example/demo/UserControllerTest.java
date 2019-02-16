@@ -99,4 +99,14 @@ public class UserControllerTest {
       System.out.println(item.getFirstName()+item.getLastName());
     });
   }
+
+  @Test
+  public void deleteByAge(){
+    jpaUserRepository.deleteByAge(30);
+  }
+
+  @Test
+  public void rtnTest(){
+      User user = jpaUserRepository.findFirstByAge(25);
+  }
 }

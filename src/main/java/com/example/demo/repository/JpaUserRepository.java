@@ -132,4 +132,8 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 
 	<T> Collection<T> findByLastName(String lastname,Class<T> type);
 
+	void deleteByAge(int age);
+
+	User findFirstByAge(int age);
+
 }
