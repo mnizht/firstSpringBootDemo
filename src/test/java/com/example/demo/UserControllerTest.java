@@ -29,13 +29,13 @@ public class UserControllerTest {
   @Resource
   private JpaUserRepository jpaUserRepository;
 
-//  @Test
-//  public void findByMap(){
-//    Map<String,Date> map = new HashMap<String,Date>();
-//    map.put("startDate",new Date());
-//
-//    System.out.println(jpaUserRepository.findByMap(map));
-//  }
+  @Test
+  public void findByMap(){
+    Map<String,Date> map = new HashMap<String,Date>();
+    map.put("startDate",new Date());
+
+    System.out.println(jpaUserRepository.findByMap(map));
+  }
 
   @Test
   public void findBySexAndStatusIn(){
