@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.pojo.NamesOnly;
 import com.example.demo.pojo.NamesOnly2;
 import com.example.demo.pojo.User;
 import com.example.demo.repository.JpaUserRepository;
@@ -26,6 +27,7 @@ import java.util.*;
 @SpringBootTest(classes=FirstSpringBootDemoApplication.class)
 public class UserControllerTest {
 
+  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
   @Resource
   private JpaUserRepository jpaUserRepository;
 
@@ -56,7 +58,7 @@ public class UserControllerTest {
 
   @Test
   public void findAllByStartDateBeforeAndEndDateAfter(){
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
     try {
       Date endDate = sdf.parse("2019-01-18 00:00:00");
       //System.out.println(jpaUserRepository.findAllByStartDateBeforeAndEndDateAfter(new Date(),endDate));
@@ -108,5 +110,23 @@ public class UserControllerTest {
   @Test
   public void rtnTest(){
       User user = jpaUserRepository.findFirstByAge(25);
+  }
+
+  @Test
+  public void createTest(){
+    User user = new User();
+  }
+
+  @Test
+  public void pageableTest(){
+    Sort.Direction sortDirection = Sort.Direction.fromString("ASC");
+    Pageable pageable = PageRequest.of(0,2,sortDirection,"id");
+
+      Page<NamesOnly> page = jpaUserRepository.findByUserNameLike(null, pageable);
+      System.out.println(page.getTotalElements());
+      System.out.println(page.getTotalPages());
+      page.getContent().stream().forEach(item->{
+        System.out.println(item.toString());
+      });
   }
 }

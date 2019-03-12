@@ -139,4 +139,8 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	@Query(value = "select * from t_user where 1=1",
 	nativeQuery = true)
 	List<User> findByMap(Map<String, Date> map);
+
+	Page<NamesOnly> findByUserNameLikeAndStartDateBefore(String name,Date date,Pageable pageable);
+	Page<NamesOnly> findByUserNameLike(String name,Pageable pageable);
+
 }

@@ -15,6 +15,7 @@ import com.example.demo.enumeration.SexEnum;
 import lombok.Data;
 import lombok.Value;
 import lombok.experimental.Accessors;
+import org.apache.ibatis.type.Alias;
 
 /**
  * @author zhuht
@@ -23,8 +24,8 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain=true)
-@Entity(name = "user")
-@Table(name = "t_user")
+@Entity
+@Alias(value = "user")
 public class User {
 
   @Id
@@ -64,95 +65,6 @@ public class User {
   private SexEnum sex = null;
 
 
-
-//  public Long getId() {
-//    return id;
-//  }
-//
-//  public void setId(Long id) {
-//    this.id = id;
-//  }
-//
-//  public String getUserName() {
-//    return userName;
-//  }
-//
-//  public void setUserName(String userName) {
-//    this.userName = userName;
-//  }
-//
-//  public String getNote() {
-//    return note;
-//  }
-//
-//  public void setNote(String note) {
-//    this.note = note;
-//  }
-//
-//  public SexEnum getSex() {
-//    return sex;
-//  }
-//
-//  public void setSex(SexEnum sex) {
-//    this.sex = sex;
-//  }
-//
-//
-//  public String getFirstName() {
-//    return firstName;
-//  }
-//
-//  public void setFirstName(String firstName) {
-//    this.firstName = firstName;
-//  }
-//
-//  public String getLastName() {
-//    return lastName;
-//  }
-//
-//  public void setLastName(String lastName) {
-//    this.lastName = lastName;
-//  }
-//
-//  public Date getEndDate() {
-//    return endDate;
-//  }
-//
-//  public void setEndDate(Date endDate) {
-//    this.endDate = endDate;
-//  }
-//
-//  public Date getStartDate() {
-//    return startDate;
-//  }
-//
-//  public void setStartDate(Date startDate) {
-//    this.startDate = startDate;
-//  }
-//
-//  public Integer getAge() {
-//    return age;
-//  }
-//
-//  public void setAge(Integer age) {
-//    this.age = age;
-//  }
-//
-//  public boolean isActive() {
-//    return active;
-//  }
-//
-//  public void setActive(boolean active) {
-//    this.active = active;
-//  }
-//
-//  public Integer getStatus() {
-//    return status;
-//  }
-//
-//  public void setStatus(Integer status) {
-//    this.status = status;
-//  }
 
   @Override
   public String toString() {
