@@ -1,8 +1,11 @@
 package com.example.demo;
 
+import com.example.demo.pojo.NamesOnly;
 import com.example.demo.pojo.NamesOnly2;
 import com.example.demo.pojo.User;
 import com.example.demo.repository.JpaUserRepository;
+import com.example.demo.utils.BeanUtils;
+import net.sf.cglib.beans.BeanMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,9 +16,17 @@ import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author zhuhaitao
@@ -108,5 +119,40 @@ public class UserControllerTest {
   @Test
   public void rtnTest(){
       User user = jpaUserRepository.findFirstByAge(25);
+  }
+
+  @Test
+  public void userSaveTest(){
+    List<User> list = jpaUserRepository.findAllByAgeIn(Arrays.asList(23,24));
+    System.out.println(list);
+    List<User> update = list.stream().filter(item->{
+      item.setUserName(item.getUserName()+2);
+      return item.getAge()==24;
+    }).collect(Collectors.toList());
+    jpaUserRepository.saveAll(update);
+  }
+
+  @Test
+  public void beanMapTest(){
+//    List<User> list = jpaUserRepository.findAll();
+//    System.out.println(list);
+//    System.out.println(BeanUtils.objectsToMaps(list));
+
+    List<NamesOnly> list = new ArrayList<>(jpaUserRepository.findByLastName("毛"));
+    System.out.println(list);
+    System.out.println(BeanUtils.objectsToMaps(list));
+
+    Method[] methods = list.get(0).getClass().getDeclaredMethods();
+    for(Method method:methods){
+      System.out.println(method.getName());
+    }
+  }
+
+  @Test
+  public void jpaOrderByTest(){
+    List<User> list = jpaUserRepository.findByStatusOrderByEndDate(1);
+    for(User user:list){
+      System.out.println(user);
+    }
   }
 }

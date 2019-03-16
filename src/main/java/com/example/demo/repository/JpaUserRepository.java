@@ -139,4 +139,7 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	@Query(value = "select * from t_user where 1=1",
 	nativeQuery = true)
 	List<User> findByMap(Map<String, Date> map);
+
+	List<User> findByStatusOrderByEndDate(Integer status);
+
 }
