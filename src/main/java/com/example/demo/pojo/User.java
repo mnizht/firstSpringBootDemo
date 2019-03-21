@@ -58,6 +58,13 @@ public class User {
   @Column(name = "status")
   private Integer status;
 
+  @Column(name = "int_num")
+  private Integer intNum;
+  @Column(name = "double_num")
+  private Double doubleNum;
+  @Column(name = "long_num")
+  private Long longNum;
+
 
   //定义转换器
   @Convert(converter = SexConverter.class)

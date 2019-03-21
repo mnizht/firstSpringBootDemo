@@ -5,8 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.example.demo.pojo.NamesOnly;
-import org.springframework.data.domain.Example;
+import com.example.demo.pojo.dto.NamesOnly;
+import com.example.demo.pojo.dto.NamesOnly2;
+import com.example.demo.pojo.dto.UserNumDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -101,7 +102,7 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 			nativeQuery = true)
 	List<User> findPageListByStartDate(Integer page, Integer size, Date startDate, Date endDate);
 
-	@Query(value = "select  * from t_user where age in ?1" ,nativeQuery =true)
+	@Query(value = "select  * from t_user where  if (?1 is null,true,age in ?1)" ,nativeQuery =true)
 	List<User> findAllByAgeIn(List<Integer> ages);
 
 	@Query(value = "select user_name,s.status from t_user t left join status s " +
@@ -141,5 +142,12 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	List<User> findByMap(Map<String, Date> map);
 
 	List<User> findByStatusOrderByEndDate(Integer status);
+
+	@Query(value = "select sum(int_num) intNum,sum(double_num) doubleNum,sum(long_num) longNum from t_user"
+	,nativeQuery = true)
+	UserNumDTO findSumNum();
+
+	@Query(value = "select new NameOnly2(firstName,lastName) from User where true ")
+	List<NamesOnly2> findNameOnly2();
 
 }

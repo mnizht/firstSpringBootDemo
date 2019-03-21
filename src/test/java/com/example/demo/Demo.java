@@ -5,8 +5,11 @@ import com.example.demo.pojo.User;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -17,7 +20,8 @@ public class Demo {
   public static void main(String[] args) {
     //URLTest();
     //moneyToUpper(3000000);
-    listTest();
+   // listTest();
+    calendarTest();
 
   }
   public static void URLTest(){
@@ -65,5 +69,19 @@ public class Demo {
       System.out.println(user);
     }
 
+  }
+
+  public static void calendarTest(){
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String dateStr = "2019-03-10 23:59:59";
+    Calendar calendar = Calendar.getInstance();
+    try {
+      calendar.setTime(sdf.parse(dateStr));
+      System.out.println(calendar);
+      calendar.add(Calendar.DATE,5);
+      System.out.println(calendar);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
   }
 }

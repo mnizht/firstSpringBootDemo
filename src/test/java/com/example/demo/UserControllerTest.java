@@ -1,11 +1,11 @@
 package com.example.demo;
 
-import com.example.demo.pojo.NamesOnly;
-import com.example.demo.pojo.NamesOnly2;
+import com.example.demo.pojo.dto.NamesOnly;
+import com.example.demo.pojo.dto.NamesOnly2;
 import com.example.demo.pojo.User;
+import com.example.demo.pojo.dto.UserNumDTO;
 import com.example.demo.repository.JpaUserRepository;
 import com.example.demo.utils.BeanUtils;
-import net.sf.cglib.beans.BeanMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -154,5 +154,19 @@ public class UserControllerTest {
     for(User user:list){
       System.out.println(user);
     }
+  }
+
+  @Test
+  public void NumTest(){
+    UserNumDTO dto = jpaUserRepository.findSumNum();
+    System.out.println(dto.getIntNum());
+    System.out.println(dto.getDoubleNum());
+    System.out.println(dto.getLongNum());
+  }
+
+  @Test
+  public void nameOnly2Test(){
+    List<NamesOnly2> nameOnly2 = jpaUserRepository.findNameOnly2();
+    System.out.println(nameOnly2);
   }
 }
