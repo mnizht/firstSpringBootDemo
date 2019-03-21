@@ -8,10 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.servlet.annotation.HandlesTypes;
 
 import com.example.demo.converter.SexConverter;
 import com.example.demo.enumeration.SexEnum;
+import com.example.demo.typehandler.SexTypeHandler;
 import lombok.Data;
 import lombok.Value;
 import lombok.experimental.Accessors;
@@ -24,44 +25,32 @@ import org.apache.ibatis.type.Alias;
 
 @Data
 @Accessors(chain=true)
-@Entity
-@Alias(value = "user")
+@Alias(value = "t_user")
 public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id = null;
 
-  @Column(name = "user_name")
   private String userName = null;
 
-  @Column(name = "first_name")
   private String firstName = null;
 
-  @Column(name = "last_name")
   private String lastName = null;
 
-  @Column(name = "start_date")
   private Date startDate = null;
 
-  @Column(name = "end_date")
   private Date endDate = null;
 
-  @Column(name = "age")
   private Integer age = null;
 
-  @Column(name = "active")
   private boolean active;
 
-  @Column(name = "note")
   private String note = null;
 
-  @Column(name = "status")
   private Integer status;
 
 
-  //定义转换器
-  @Convert(converter = SexConverter.class)
   private SexEnum sex = null;
 
 
@@ -72,9 +61,5 @@ public class User {
     return "User{" + this.getId() + "," + this.getUserName() + "," + this.getSex() + "," + this.getNote() + "}";
   }
 
-  @Value
-  class NamesOnly2 {
-    String firstname,lastname;
-  }
 }
 
