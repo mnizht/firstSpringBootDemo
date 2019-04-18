@@ -23,7 +23,10 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	 * @return 用户列表
 	 * */
 	List<User> findByUserNameLike(String userName);
-	
+
+	List<User> findByUserNameEndingWith(String username);
+	List<User> findByUserNameContaining(String username);
+
 	/**
 	 * 根据主键查询
 	 * @param id -- 主键
@@ -147,7 +150,7 @@ public interface JpaUserRepository extends JpaRepository<User, Long> {
 	,nativeQuery = true)
 	UserNumDTO findSumNum();
 
-	@Query(value = "select new NameOnly2(firstName,lastName) from User where true ")
+	@Query("select new com.example.demo.pojo.dto.NamesOnly2(u.firstName,u.lastName) from user u  ")
 	List<NamesOnly2> findNameOnly2();
 
 }

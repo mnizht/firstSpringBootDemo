@@ -169,4 +169,18 @@ public class UserControllerTest {
     List<NamesOnly2> nameOnly2 = jpaUserRepository.findNameOnly2();
     System.out.println(nameOnly2);
   }
+
+
+  @Test
+  public void likeTest(){
+    List<User> user = jpaUserRepository.findByUserNameLike("天");
+    List<User> user2 = jpaUserRepository.findByUserNameLike("%天%");
+    List<User> user3 = jpaUserRepository.findByUserNameEndingWith("一");
+    List<User> user4 = jpaUserRepository.findByUserNameContaining("羽");
+
+    System.out.println(user);
+    System.out.println(user2);
+    System.out.println(user3);
+    System.out.println(user4);
+  }
 }
