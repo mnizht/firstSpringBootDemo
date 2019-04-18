@@ -1,10 +1,15 @@
 package com.example.demo.controller;
 
 import com.example.demo.pojo.User;
+import com.example.demo.pojo.dto.TestParam;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 /**
  * @author zhuht
@@ -23,6 +28,12 @@ public class UserController {
     @RequestMapping("/query")
     public User mybatisGetUser(){
         return userService.selectUserByUserName("梵天一");
+    }
+
+
+    @GetMapping("/params")
+    public void testParam(@RequestBody TestParam param){
+        System.out.println(param);
     }
 
     /**
