@@ -3,7 +3,6 @@ package com.example.demo.service;
 import com.example.demo.dao.UserDao;
 import com.example.demo.enumeration.SexEnum;
 import com.example.demo.pojo.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,6 +43,7 @@ public class UserService {
   public void deleteUserById(int id) {
     userDao.deleteUser(id);
   }
+
   @Transactional
   public void updateUserNum(int intNum, double doubleNum, long longNum, int id) {
     userDao.updateUserNumById(intNum, doubleNum, longNum, id);

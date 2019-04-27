@@ -10,6 +10,8 @@ import org.flowable.task.service.delegate.DelegateTask;
 
 public class BossTaskHandler implements TaskListener {
 
+  private static final long serialVersionUID = -5301006670654063369L;
+
   @Override
   public void notify(DelegateTask delegateTask) {
     delegateTask.setAssignee("老板");

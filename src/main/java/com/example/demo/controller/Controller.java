@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -59,7 +60,7 @@ public class Controller {
     for (Task task : tasks) {
       System.out.println(task.toString());
     }
-    return tasks.toArray().toString();
+    return Arrays.toString(tasks.toArray());
   }
 
   /**
@@ -108,10 +109,10 @@ public class Controller {
     }
     Task task = taskService.createTaskQuery().processInstanceId(pi.getId()).singleResult();
     //使用流程实例ID，查询正在执行的执行对象表，返回流程实例对象
-    String InstanceId = task.getProcessInstanceId();
+    String instanceId = task.getProcessInstanceId();
     List<Execution> executions = runtimeService
       .createExecutionQuery()
-      .processInstanceId(InstanceId)
+      .processInstanceId(instanceId)
       .list();
 
     //得到正在执行的Activity的Id

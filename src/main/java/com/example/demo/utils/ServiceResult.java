@@ -1,5 +1,8 @@
 package com.example.demo.utils;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
 
 /**
@@ -7,6 +10,8 @@ import java.io.Serializable;
  * @date 2018/12/21 18:16
  */
 
+@Data
+@Accessors(chain = true)
 public class ServiceResult implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -15,48 +20,6 @@ public class ServiceResult implements Serializable {
     private String rtnCode;
     private String rtnPage;
     private boolean isSuccess;
-
-    public String getRtnInfo() {
-        return rtnInfo;
-    }
-
-    public void setRtnInfo(String rtnInfo) {
-        this.rtnInfo = rtnInfo;
-    }
-
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
-
-    public String getRtnCode() {
-        return rtnCode;
-    }
-
-    public void setRtnCode(String rtnCode) {
-        this.rtnCode = rtnCode;
-    }
-
-    public String getRtnPage() {
-        return rtnPage;
-    }
-
-    public void setRtnPage(String rtnPage) {
-        this.rtnPage = rtnPage;
-    }
-
-    public boolean isSuccess() {
-        return isSuccess;
-    }
-
-    public void setSuccess(boolean success) {
-        isSuccess = success;
-    }
-
-
 
 
 }

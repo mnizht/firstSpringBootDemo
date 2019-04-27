@@ -1,22 +1,14 @@
 package com.example.demo.pojo;
 
-import java.util.Date;
+import com.example.demo.enumeration.SexEnum;
+import lombok.Data;
+import lombok.experimental.Accessors;
+import org.apache.ibatis.type.Alias;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.servlet.annotation.HandlesTypes;
-
-import com.example.demo.converter.SexConverter;
-import com.example.demo.enumeration.SexEnum;
-import com.example.demo.typehandler.SexTypeHandler;
-import lombok.Data;
-import lombok.Value;
-import lombok.experimental.Accessors;
-import org.apache.ibatis.type.Alias;
+import java.util.Date;
 
 /**
  * @author zhuht
@@ -24,7 +16,7 @@ import org.apache.ibatis.type.Alias;
  */
 
 @Data
-@Accessors(chain=true)
+@Accessors(chain = true)
 @Alias(value = "t_user")
 public class User {
 
@@ -54,10 +46,8 @@ public class User {
   private SexEnum sex = null;
 
 
-
   @Override
   public String toString() {
-    // TODO Auto-generated method stub
     return "User{" + this.getId() + "," + this.getUserName() + "," + this.getSex() + "," + this.getNote() + "}";
   }
 

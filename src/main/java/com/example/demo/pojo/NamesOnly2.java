@@ -8,5 +8,6 @@ import lombok.Value;
  */
 @Value
 public class NamesOnly2 {
-  String firstName,lastName;
+  String firstName;
+  String lastName;
 }

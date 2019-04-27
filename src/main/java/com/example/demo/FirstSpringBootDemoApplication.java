@@ -12,12 +12,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class FirstSpringBootDemoApplication implements WebMvcConfigurer {
 
-
-
+	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-
 		configurer.favorPathExtension(false);
-
 	}
 
 	public static void main(String[] args) {
