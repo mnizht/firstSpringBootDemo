@@ -7,21 +7,18 @@ import org.springframework.web.servlet.config.annotation.ContentNegotiationConfi
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 启动入口*/
+ * 启动入口
+ */
 @SpringBootApplication
 @Configuration
 public class FirstSpringBootDemoApplication implements WebMvcConfigurer {
 
+  @Override
+  public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+    configurer.favorPathExtension(false);
+  }
 
-
-	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
-
-		configurer.favorPathExtension(false);
-
-	}
-
-
-	public static void main(String[] args) {
-		SpringApplication.run(FirstSpringBootDemoApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(FirstSpringBootDemoApplication.class, args);
+  }
 }

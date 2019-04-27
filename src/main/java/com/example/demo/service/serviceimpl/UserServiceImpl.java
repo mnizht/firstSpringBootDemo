@@ -6,10 +6,11 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import com.example.demo.pojo.db.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.pojo.User;
+
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 

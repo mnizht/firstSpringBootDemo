@@ -1,4 +1,4 @@
-package com.example.demo.pojo;
+package com.example.demo.pojo.db;
 
 import java.util.Date;
 
@@ -73,7 +73,6 @@ public class User {
 
   @Override
   public String toString() {
-    // TODO Auto-generated method stub
     return "{"
       + (this.getId() == null ? "" : getId() + ",")
       + (this.getUserName() == null ? "" : getUserName() + ",")

@@ -1,19 +1,19 @@
 package com.example.demo.service;
 
-import java.util.List;
-import java.util.Optional;
+import com.example.demo.pojo.db.User;
 
-import com.example.demo.pojo.User;
+import java.util.List;
+
 
 public interface UserService {
 
-	public void createUser(User user);
+  void createUser(User user);
 
-	public List<User> getUser();
+  List<User> getUser();
 
-	public User findById(long id);
-	
-	public User update(User user, long l);
+  User findById(long id);
 
-	public void deleteUserById(long id);
+  User update(User user, long l);
+
+  void deleteUserById(long id);
 }

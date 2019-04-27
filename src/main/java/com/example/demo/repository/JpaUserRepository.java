@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.example.demo.pojo.db.User;
 import com.example.demo.pojo.dto.NamesOnly;
 import com.example.demo.pojo.dto.NamesOnly2;
 import com.example.demo.pojo.dto.UserNumDTO;
@@ -12,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.example.demo.pojo.User;
 import org.springframework.data.jpa.repository.Query;
 
 public interface JpaUserRepository extends JpaRepository<User, Long> {

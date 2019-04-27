@@ -1,10 +1,10 @@
 package com.example.demo;
 
 /**
-  * @author zhuhaitao
-  * @date 2019/2/16 11:22
-  **/
-public class MoneyForm {
+ * @author zhuhaitao
+ * @date 2019/2/16 11:22
+ **/
+class MoneyForm {
 
   /**
    * 单位，补在每位数字之后，根据数字某些零后的单位要省略
@@ -19,7 +19,7 @@ public class MoneyForm {
    */
   private static final long MAX_VALUE = 999999999999999L;
 
-  public static String digitUppercase(long money) {
+  static String digitUppercase(long money) {
     if (money < 0 || money > MAX_VALUE) {
       return "参数非法!";
     }

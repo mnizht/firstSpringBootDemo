@@ -12,7 +12,8 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class NamesOnly2 {
-  String firstName,lastName;
+  String firstName;
+  String lastName;
 
   public NamesOnly2(String firstName, String lastName) {
     this.firstName = firstName;

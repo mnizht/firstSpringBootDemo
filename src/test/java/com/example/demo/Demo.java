@@ -1,6 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.pojo.User;
+
+import com.example.demo.pojo.db.User;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
@@ -13,30 +14,31 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * author zhuhaitao
- * date 2019/3/12 14:11
+ * @author zhuhaitao
+ * @date 2019/3/12 14:11
  **/
 public class Demo {
   public static void main(String[] args) {
     //URLTest();
     //moneyToUpper(3000000);
-   // listTest();
+    // listTest();
     calendarTest();
 
   }
-  public static void URLTest(){
+
+  public static void URLTest() {
     try {
       String s = "张三 妈妈";
       System.out.println(URLEncoder.encode(s));
-      System.out.println(com.sun.deploy.net.URLEncoder.encode(s,"utf8"));
-      s = s.replace(" ","");
-      System.out.println(URLEncoder.encode(s,"UTF-8"));
+      System.out.println(com.sun.deploy.net.URLEncoder.encode(s, "utf8"));
+      s = s.replace(" ", "");
+      System.out.println(URLEncoder.encode(s, "UTF-8"));
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
   }
 
-  public static void userTest(){
+  public static void userTest() {
     User user1 = new User()
       .setUserName("张小凡");
     User user2 = new User()
@@ -44,16 +46,16 @@ public class Demo {
     List<User> list = Arrays.asList(user1, user2);
 
     Method[] methods = user1.getClass().getDeclaredMethods();
-    for(Method method:methods){
+    for (Method method : methods) {
       System.out.println(method.getName());
     }
   }
 
-  public static void moneyToUpper(long money){
+  public static void moneyToUpper(long money) {
     System.out.println(MoneyForm.digitUppercase(money));
   }
 
-  public static void listTest(){
+  public static void listTest() {
     User user1 = new User()
       .setUserName("张小凡");
     User user2 = new User()
@@ -65,20 +67,20 @@ public class Demo {
     list.add(user2);
     list.add(user3);
 
-    for(User user:list){
+    for (User user : list) {
       System.out.println(user);
     }
 
   }
 
-  public static void calendarTest(){
+  private static void calendarTest() {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String dateStr = "2019-03-10 23:59:59";
     Calendar calendar = Calendar.getInstance();
     try {
       calendar.setTime(sdf.parse(dateStr));
       System.out.println(calendar);
-      calendar.add(Calendar.DATE,5);
+      calendar.add(Calendar.DATE, 5);
       System.out.println(calendar);
     } catch (ParseException e) {
       e.printStackTrace();
