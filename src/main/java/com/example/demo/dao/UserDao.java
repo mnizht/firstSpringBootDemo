@@ -1,7 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.enumeration.SexEnum;
-import com.example.demo.pojo.User;
+import com.example.demo.pojo.db.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

@@ -1,4 +1,4 @@
-package com.example.demo.pojo;
+package com.example.demo.pojo.db;
 
 import com.example.demo.enumeration.SexEnum;
 import lombok.Data;

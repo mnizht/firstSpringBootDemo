@@ -1,11 +1,12 @@
 package com.example.demo.controller;
 
-import com.example.demo.pojo.User;
+import com.example.demo.pojo.db.User;
 import com.example.demo.pojo.dto.TestParam;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,8 +26,8 @@ public class UserController {
 
 
   @RequestMapping("/query")
-  public User mybatisGetUser() {
-    return userService.selectUserByUserName("梵天一");
+  public User mybatisGetUser(@RequestParam String username) {
+    return userService.selectUserByUserName(username);
   }
 
 

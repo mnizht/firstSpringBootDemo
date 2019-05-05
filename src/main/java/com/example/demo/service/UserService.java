@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dao.UserDao;
 import com.example.demo.enumeration.SexEnum;
-import com.example.demo.pojo.User;
+import com.example.demo.pojo.db.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
