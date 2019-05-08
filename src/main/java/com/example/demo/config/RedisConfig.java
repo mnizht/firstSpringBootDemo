@@ -33,9 +33,9 @@ public class RedisConfig {
     JedisConnectionFactory factory = new JedisConnectionFactory(poolConfig);
     //创建单机的redis配置
     RedisStandaloneConfiguration rsConfig = factory.getStandaloneConfiguration();
-    rsConfig.setHostName("");
-    rsConfig.setPort(2222);
-    rsConfig.setPassword(RedisPassword.of("pppp"));
+    rsConfig.setHostName("2.57.254.24");
+    rsConfig.setPort(6379);
+    rsConfig.setPassword(RedisPassword.of("zhuhaitao")); //
     this.factory = factory;
     return factory;
   }
