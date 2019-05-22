@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.dao.UserDao;
 import com.example.demo.enumeration.SexEnum;
 import com.example.demo.pojo.db.User;
+import com.example.demo.pojo.dto.UserParam;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +49,10 @@ public class UserService {
   @Transactional
   public void updateUserNum(int intNum, double doubleNum, long longNum, int id) {
     userDao.updateUserNumById(intNum, doubleNum, longNum, id);
+  }
+
+  public void save(UserParam param) {
+    userDao.insertUser(param.getUserName(),param.getLastName(),param.getFirstName(),SexEnum.getEnumById(param.getSex()),param.getAge(),
+      param.getStartDate(),param.getEndDate(),param.getActive(),param.getNote(),param.getStatus());
   }
 }
