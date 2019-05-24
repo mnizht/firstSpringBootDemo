@@ -1,0 +1,1 @@
+delete from people where age = 128;
