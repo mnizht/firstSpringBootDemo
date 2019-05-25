@@ -13,16 +13,16 @@ import org.springframework.jdbc.datasource.SingleConnectionDataSource;
  * 所以这里只要 重载 migrate 方法即可。
  */
 public class V1_7__insert extends BaseJavaMigration {
-  public static final String sql = "insert into people2 (name,age) values ('聂小倩',18)";
+  public static final String SQL = "insert into people2 (name,age) values ('聂小倩',18)";
 
   @Override
   public void migrate(Context context) throws Exception {
     new JdbcTemplate(new SingleConnectionDataSource(context.getConnection(), true))
-      .execute(sql);
+      .execute(SQL);
   }
 
   @Override
   public Integer getChecksum() {
-    return sql.hashCode();
+    return SQL.hashCode();
   }
 }
