@@ -4,11 +4,7 @@ package com.example.demo.main;
 import com.example.demo.config.RedisConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import redis.clients.jedis.Jedis;
-
-import java.sql.SQLOutput;
 
 /**
  * @author zhuhaitao

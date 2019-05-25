@@ -18,8 +18,8 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RedisConfig {
   private RedisConnectionFactory factory = null;
 
-  public RedisConnectionFactory initRedisConnectionFactory(){
-    if(this.factory!=null){
+  public RedisConnectionFactory initRedisConnectionFactory() {
+    if (this.factory != null) {
       return this.factory;
     }
     JedisPoolConfig poolConfig = new JedisPoolConfig();
@@ -30,13 +30,13 @@ public class RedisConfig {
     //最大等待毫秒数
     poolConfig.setMaxWaitMillis(2000);
     //创建jedis连接工厂
-    JedisConnectionFactory factory = new JedisConnectionFactory(poolConfig);
+    JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(poolConfig);
     //创建单机的redis配置
-    RedisStandaloneConfiguration rsConfig = factory.getStandaloneConfiguration();
+    RedisStandaloneConfiguration rsConfig = jedisConnectionFactory.getStandaloneConfiguration();
     rsConfig.setHostName("2.57.254.24");
     rsConfig.setPort(6379);
     rsConfig.setPassword(RedisPassword.of("zhuhaitao")); //
-    this.factory = factory;
+    this.factory = jedisConnectionFactory;
     return factory;
   }
 
@@ -44,9 +44,8 @@ public class RedisConfig {
    * 字符串序列化器
    * Redis是基于字符串存储的Nosql，而java是基于对象的语言，对象是无法存储到Redis中的，
    * Java在向Redis中写数据时，需要先将数据序列化成二进制字符串才能保存。取数据时也要反序列化后才能正常显示。
-   * @return
    */
-  @Bean(name="redisTemplate")
+  @Bean(name = "redisTemplate")
   public RedisTemplate<Object, Object> initRedisTemplate() {
     RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
     redisTemplate.setConnectionFactory(initRedisConnectionFactory());

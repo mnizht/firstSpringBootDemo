@@ -1,8 +1,6 @@
 package com.example.demo.pojo.dto;
 
-import com.sun.istack.internal.NotNull;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +16,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserParam {
-  @NotNull
+
   String userName;
   String firstName;
   String lastName;
