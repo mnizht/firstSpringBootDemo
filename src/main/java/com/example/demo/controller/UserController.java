@@ -4,6 +4,9 @@ package com.example.demo.controller;
 import com.example.demo.pojo.db.User;
 import com.example.demo.repository.JpaUserRepository;
 import com.example.demo.utils.ServiceResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +38,9 @@ import java.util.Map;
  * @date 2018-12-17
  */
 
+@Api(value = "User Controller")
 @RestController
 @RequestMapping(value = "/user")
-
 public class UserController {
 
   @Autowired
@@ -56,6 +59,8 @@ public class UserController {
   }
 
 
+  @ApiOperation(value = "getUserById")
+  @ApiImplicitParam(name = "id",value = "用户id", required = true,dataType = "String")
   @RequestMapping("/getUserById")
   @ResponseBody
   public User getUserById(Long id) {
