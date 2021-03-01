@@ -6,6 +6,7 @@ import com.alibaba.excel.write.metadata.style.WriteCellStyle;
 import com.example.demo.utils.TestFileUtil;
 import excel.custome.ComplexHeadStyles;
 import excel.custome.HeadStyleWriteHandler;
+import excel.custome.MyMergeStrategy;
 import excel.data.ExportOrdersHead;
 import excel.data.HeadEntity;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
@@ -16,8 +17,11 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.stream.Collectors;
 
 /**
  * @author zhuht
@@ -40,11 +44,33 @@ public class ExcelTest {
     ArrayBlockingQueue<ComplexHeadStyles> complexHeadStylesArrayBlockingQueue = getExportOrdersHeadStyleQueue();
     // 自定义表头写策略
     HeadStyleWriteHandler headStyleWriteHandler = new HeadStyleWriteHandler(complexHeadStylesArrayBlockingQueue);
-
+    //自定义数据写策略
+    MyMergeStrategy mergeStrategy = new MyMergeStrategy(getGroup(data()));
     // 写excel
     EasyExcelFactory.write(fileName, ExportOrdersHead.class)
       .registerWriteHandler(headStyleWriteHandler)
+      .registerWriteHandler(mergeStrategy)
       .sheet("sheet1").doWrite(data());
+
+//    ExcelWriterBuilder write = EasyExcelFactory.write(fileName, ExportOrdersHead.class);
+//    ExcelWriterBuilder excelWriterBuilder = write.registerWriteHandler(headStyleWriteHandler);
+//    ExcelWriterSheetBuilder sheet1 = excelWriterBuilder.sheet("sheet1");
+//    sheet1.doWrite(data());
+
+  }
+
+  private Map<Integer, Integer> getGroup(List<ExportOrdersHead> data) {
+    List<Integer> collect = data.stream().collect(Collectors.groupingBy(ExportOrdersHead::getOrdersSn, Collectors.counting()))
+      .values().stream().map(Long::intValue).collect(Collectors.toList());
+    Map<Integer, Integer> map = new HashMap<>();
+    int row = 3;
+    for (int num : collect) {
+      if (num > 1) {
+        map.put(row, num);
+      }
+      row += num;
+    }
+    return map;
 
   }
 
