@@ -77,26 +77,26 @@ public class ExcelTest {
   private List<ExportOrdersHead> data() {
     List<ExportOrdersHead> data = new ArrayList<>();
     ExportOrdersHead data1 = new ExportOrdersHead()
-      .setOrdersSn("123456").setOrdersName("订单1").setReceiveAt("2021/02/26 10:30").setStudentSn("123").setStudentName("张三")
+      .setOrdersSn("6697096672868175872").setOrdersName("订单1").setReceiveAt("2021/02/26 10:30").setStudentSn("20200330000033").setStudentName("张三")
       .setSignedGrade("一年级").setBuyPeriod(300).setPayWayCash(new BigDecimal(100)).setPayWayCard(new BigDecimal(120.50))
       .setPayWayQRCode(new BigDecimal(200.50)).setPayWayOther(new BigDecimal(0)).setAmount(new BigDecimal(421))
       .setPayed(new BigDecimal(421)).setRemark(null).setSignedType("新签").setRecommend("已关联")
       .setUserName("张三").setUserRole("咨询师").setUserDep("咨询部").setDistributePeriod(100);
     ExportOrdersHead data2 = new ExportOrdersHead()
-      .setOrdersSn("123456").setOrdersName("订单1").setReceiveAt("2021/02/26 10:30").setStudentSn("123").setStudentName("张三")
+      .setOrdersSn("6697096672868175872").setOrdersName("订单1").setReceiveAt("2021/02/26 10:30").setStudentSn("20200330000033").setStudentName("张三")
       .setSignedGrade("一年级").setBuyPeriod(300).setPayWayCash(new BigDecimal(100)).setPayWayCard(new BigDecimal(120.50))
       .setPayWayQRCode(new BigDecimal(200.50)).setPayWayOther(new BigDecimal(0)).setAmount(new BigDecimal(421))
       .setPayed(new BigDecimal(421)).setRemark(null).setSignedType("新签").setRecommend("已关联")
       .setUserName("李四").setUserRole("咨询师").setUserDep("咨询部").setDistributePeriod(100);
     ExportOrdersHead data3 = new ExportOrdersHead()
-      .setOrdersSn("123456").setOrdersName("订单1").setReceiveAt("2021/02/26 10:30").setStudentSn("123").setStudentName("张三")
+      .setOrdersSn("6697096672868175872").setOrdersName("订单1").setReceiveAt("2021/02/26 10:30").setStudentSn("20200330000033").setStudentName("张三")
       .setSignedGrade("一年级").setBuyPeriod(300).setPayWayCash(new BigDecimal(100)).setPayWayCard(new BigDecimal(120.50))
       .setPayWayQRCode(new BigDecimal(200.50)).setPayWayOther(new BigDecimal(0)).setAmount(new BigDecimal(421))
       .setPayed(new BigDecimal(421)).setRemark(null).setSignedType("新签").setRecommend("已关联")
       .setUserName("王五").setUserRole("班主任").setUserDep("教学部").setDistributePeriod(200);
 
     ExportOrdersHead data4 = new ExportOrdersHead()
-      .setOrdersSn("12345678").setOrdersName("订单2").setReceiveAt("2021/02/26 10:30").setStudentSn("123").setStudentName("张三")
+      .setOrdersSn("6697096672868175873").setOrdersName("订单2").setReceiveAt("2021/02/26 10:30").setStudentSn("20200330000033").setStudentName("张三")
       .setSignedGrade("一年级").setBuyPeriod(300).setPayWayCash(new BigDecimal(100)).setPayWayCard(new BigDecimal(120.50))
       .setPayWayQRCode(new BigDecimal(200.50)).setPayWayOther(new BigDecimal(0)).setAmount(new BigDecimal(421))
       .setPayed(new BigDecimal(421)).setRemark("定金").setSignedType("续费").setRecommend("未关联");

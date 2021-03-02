@@ -1,6 +1,7 @@
 package excel.data;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import excel.custome.HeadStyleWriteHandler;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -14,18 +15,23 @@ import java.math.BigDecimal;
  */
 @Data
 @Accessors(chain = true)
+@ColumnWidth(12)
 public class ExportOrdersHead {
 
   private static final String EXPLAIN_TEXT = "说明：\n" +
     "只付了定金但未付尾款的订单收款记录，备注中标注有“定金”字样；备注为空表示该订单已收全款";
 
   @ExcelProperty(value = {EXPLAIN_TEXT, "订单编号"})
+  @ColumnWidth(22)
   private String ordersSn;
   @ExcelProperty(value = {EXPLAIN_TEXT, "订单名称"})
+  @ColumnWidth(18)
   private String ordersName;
   @ExcelProperty(value = {EXPLAIN_TEXT, "收款时间"})
+  @ColumnWidth(18)
   private String receiveAt;
   @ExcelProperty(value = {EXPLAIN_TEXT, "学员编号"})
+  @ColumnWidth(20)
   private String studentSn;
   @ExcelProperty(value = {EXPLAIN_TEXT, "学员姓名"})
   private String studentName;
@@ -39,9 +45,10 @@ public class ExportOrdersHead {
   private BigDecimal payWayCard;
   @ExcelProperty(value = {EXPLAIN_TEXT, "扫码"})
   private BigDecimal payWayQRCode;
-  @ExcelProperty(value = {EXPLAIN_TEXT, "其它"})
+  @ExcelProperty(value = {EXPLAIN_TEXT, "其他"})
   private BigDecimal payWayOther;
   @ExcelProperty(value = {EXPLAIN_TEXT, "订单总金额"})
+  @ColumnWidth(14)
   private BigDecimal amount;
   @ExcelProperty(value = {EXPLAIN_TEXT, "实收金额"})
   private BigDecimal payed;
