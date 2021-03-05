@@ -101,10 +101,11 @@ public class ExcelTest {
       .setPayWayQRCode(new BigDecimal(200.50)).setPayWayOther(new BigDecimal(0)).setAmount(new BigDecimal(421))
       .setPayed(new BigDecimal(421)).setRemark("定金").setSignedType("续费").setRecommend("未关联");
 
+    data.add(data4);
     data.add(data1);
     data.add(data2);
     data.add(data3);
-    data.add(data4);
+
     return data;
   }
 

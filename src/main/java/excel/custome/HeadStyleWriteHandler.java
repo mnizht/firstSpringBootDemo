@@ -7,7 +7,9 @@ import com.alibaba.excel.write.style.AbstractCellStyleStrategy;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.util.Objects;
@@ -52,7 +54,7 @@ public class HeadStyleWriteHandler extends AbstractCellStyleStrategy {
       // 取出当前队列中的自定义表头信息，与当前坐标比较，判断是否相符
       assert complexHeadStyles != null;
       if (cell.getColumnIndex() == complexHeadStyles.getY() && relativeRowIndex.equals(complexHeadStyles.getX())) {
-        if (Objects.nonNull(complexHeadStyles.getCellHeight())){
+        if (Objects.nonNull(complexHeadStyles.getCellHeight())) {
           cell.getRow().setHeightInPoints(complexHeadStyles.getCellHeight());
         }
         // 设置自定义表头样式
@@ -70,6 +72,11 @@ public class HeadStyleWriteHandler extends AbstractCellStyleStrategy {
 
   @Override
   protected void setContentCellStyle(Cell cell, Head head, Integer integer) {
-
+    if (cell.getRowIndex() > 0) {
+      WriteCellStyle writeCellStyle = new WriteCellStyle();
+      writeCellStyle.setHorizontalAlignment(HorizontalAlignment.CENTER);
+      writeCellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+      cell.setCellStyle(StyleUtil.buildContentCellStyle(workbook, writeCellStyle));
+    }
   }
 }
