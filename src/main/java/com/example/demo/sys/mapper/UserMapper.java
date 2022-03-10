@@ -1,12 +1,15 @@
 package com.example.demo.sys.mapper;
 
-import com.example.demo.sys.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.demo.pojo.dto.TempDTO;
+import com.example.demo.sys.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author zhuht
@@ -15,4 +18,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+  List<TempDTO> selectSumAge();
 }
